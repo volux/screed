@@ -1,0 +1,6 @@
+Options -Indexes
+
+RewriteEngine On
+RewriteRule ^.htaccess$ - [F]
+RewriteCond %{REQUEST_URI} !docs/
+RewriteRule (.*) /docs/$1 [QSA,L]
