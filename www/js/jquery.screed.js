@@ -263,7 +263,7 @@
                         $clone.find(options.el.head).trigger('init'+options.key);
                         $clone.find(options.el.act).trigger('init'+options.key);
                         $screed.data('select'+options.key, true);
-                        $clone.find(options.el.ed).first().focus();
+                        $clone.removeAttr('role').find(options.el.ed).first().focus();
                         return false
                     },
 
@@ -279,12 +279,14 @@
                         up: function ($el) {
                             var $scene = $el.closest(options.el.scene);
                             $scene.prev().before($scene);
+                            $scene.find(options.el.ed).first().focus();
                             return false
                         },
 
                         down: function ($el) {
                             var $scene = $el.closest(options.el.scene);
                             $scene.next().after($scene);
+                            $scene.find(options.el.ed).first().focus();
                             return false
                         }
                     },
@@ -294,12 +296,38 @@
                         return false
                     },
 
-                    shift: function($el) {
-                        return false
-                    },
-
-                    unShift: function($el) {
-                        return false
+                    shift: {
+                        pop: function($el) {
+                            var $scene = $el.closest(options.el.scene);
+                            switch ($scene.attr('role')) {
+                                case 'skip':
+                                    $scene.attr('role', 'sub');
+                                    break;
+                                case 'sub':
+                                    $scene.removeAttr('role');
+                                    break;
+                                default:
+                                    break;
+                            }
+                            return false
+                        },
+                        deep: function($el) {
+                            var $scene = $el.closest(options.el.scene);
+                            if (!$scene.prev().length) {
+                                return false
+                            }
+                            switch ($scene.attr('role')) {
+                                case 'skip':
+                                    break;
+                                case 'sub':
+                                    $scene.attr('role', 'skip');
+                                    break;
+                                default:
+                                    $scene.attr('role', 'sub');
+                                    break;
+                            }
+                            return false
+                        }
                     }
                 },
 
@@ -343,13 +371,13 @@
                                 case 37:
                                     /* ctrl + left - unShiftScene(tm) :)  */
                                     event.preventDefault();
-                                    return scene.unShift($el);
+                                    return scene.shift.pop($el);
                                     break;
 
                                 case 39:
                                     /* ctrl + right - ShiftScene(tm) :)  */
                                     event.preventDefault();
-                                    return scene.shift($el);
+                                    return scene.shift.deep($el);
                                     break;
 
                                 case 46:

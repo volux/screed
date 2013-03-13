@@ -22,24 +22,37 @@ body {
 }
 .screed [contenteditable="true"]:focus {
     outline: none;
-/*    background-color: #fbfbfb;*/
+    /*    background-color: #fbfbfb;*/
 }
 .screed section {
     margin-bottom: 5mm;
-    counter-increment: section;
+}
+.screed section[role=skip] {
+    color: #696969;
 }
 .screed section:before {
+    counter-increment: section;
     content: counter(section);
     float: right;
 }
+.screed section:not([role]) {
+    counter-reset: deep;
+}
+.screed section[role]:before {
+    counter-increment: deep;
+    content: counter(section) "." counter(deep);
+    float: right;
+}
 .screed ul {
-    background-color: whiteSmoke;
-    margin: 0 10mm 5mm -5mm;
-    padding-right: 5mm;
+    background-color: #e0e0e0;
+    margin: 0 15mm 5mm -5mm;
     padding-left: 5mm;
     page-break-after: avoid;
     page-break-inside: avoid;
     page-break-before: auto;
+}
+.screed section[role] ul {
+    background-color: #f6f6f6;
 }
 .screed li {
     text-transform: uppercase;
@@ -62,16 +75,16 @@ body {
 .screed .when {
 }
 .screed p {
-    margin: 0 0 5mm 0;
+    margin: 0;
     font-size: 12pt;
     font-family: "Courier New", monospace;
     line-height: 5mm;
 }
 .screed .comm {
+    margin: 0 0 5mm 0;
 }
 .screed .char {
-    margin-left: 6.75cm;
-    margin-right: 0;
+    margin: 0 0 5mm 6.75cm;
     text-transform: uppercase;
     page-break-after: avoid;
     page-break-inside: avoid;
@@ -143,10 +156,10 @@ body {
     margin: 1in .5in .5in 1.5in;
     counter-increment: page;
 
-    @top-right {
+@top-right {
         content: 'Test';
     }
-    @bottom-right {
+@bottom-right {
         content: counter(page);
     }
-}
+    }
