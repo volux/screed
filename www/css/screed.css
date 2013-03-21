@@ -1,0 +1,221 @@
+/* screed.css */
+@charset "UTF-8";
+
+html {
+}
+body {
+    background: whiteSmoke none;
+}
+.pages {
+    margin: 10mm auto;
+    padding: 20mm 25mm 12.5mm 37.5mm;
+    box-sizing: border-box;
+    width: 210mm;
+    border: none;
+    box-shadow: 0 2px 5px hsla(0, 0%, 0%, .25);
+    background: rgba(250, 250, 250, 1) linear-gradient(top, rgba(250, 250, 250, .1) 80%, rgba(195, 195, 195, .05) 90%) 0 263.5mm;
+    background: rgba(250, 250, 250, 1) -webkit-linear-gradient(top, rgba(250, 250, 250, .1) 80%, rgba(195, 195, 195, .05) 90%) 0 263.5mm;
+    background-size: 100% 244mm;
+        -webkit-background-size: 100% 244mm;
+}
+.screed {
+    color: #000000;
+    width: 100%;
+    min-height: 240mm;
+    margin: 0;
+    counter-reset: section;
+    font-family: "Courier New", monospace;
+    font-size: 12pt;
+    line-height: 5mm;
+}
+
+.screed * {
+    font-family: "Courier New", monospace;
+    font-size: 12pt;
+    line-height: 5mm;
+}
+
+.screed [contenteditable="true"]:focus {
+    outline: none;
+}
+.screed fieldset {
+    display: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    height: 244mm;
+    overflow: hidden;
+    page-break-after: always;
+}
+.screed label {
+    display: block;
+}
+.screed .title {
+    margin: 65mm 32.5mm 0 32.5mm;
+    text-align: center;
+    text-transform: uppercase;
+}
+.screed .author {
+    margin: 5mm 32.5mm 0 32.5mm;
+    text-align: center;
+    text-transform: capitalize;
+}
+.screed .from {
+    margin: 5mm 32.5mm 0 32.5mm;
+    text-align: center;
+    text-transform: lowercase;
+}
+.screed .contact {
+    margin: 90mm 0 0 75.5mm;
+}
+.screed section {
+    margin-bottom: 5mm;
+}
+.screed section[role=skip] {
+    color: #696969;
+}
+.screed section:before {
+    counter-increment: section;
+    content: counter(section);
+    float: right;
+}
+.screed section:not([role]) {
+    counter-reset: deep;
+}
+.screed section[role]:before {
+    counter-increment: deep;
+    content: counter(section) "." counter(deep);
+    float: right;
+}
+.screed ul {
+    background-color: #e0e0e0;
+    background: rgba(250, 250, 250, 1) linear-gradient(top, rgba(250, 250, 250, .1) 1%, rgba(195, 195, 195, .25) 50%) 0 0;
+    background: rgba(250, 250, 250, 1) -webkit-linear-gradient(top, rgba(250, 250, 250, .1) 1%, rgba(195, 195, 195, .25) 50%) 0 0;
+    background-size: 100% 5mm;
+        -webkit-background-size: 100% 5mm;
+    margin: 0 15mm 5mm -5mm;
+    padding-left: 5mm;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    page-break-before: auto;
+}
+.screed section[role] ul {
+    background-color: #f6f6f6;
+    background: rgba(250, 250, 250, 1) linear-gradient(top, white 1%, #f6f6f6 50%) 0 0;
+        background: rgba(250, 250, 250, 1) -webkit-linear-gradient(top, white 1%, #f6f6f6 50%) 0 0;
+}
+.screed li {
+    text-transform: uppercase;
+    display: inline-block;
+    list-style: none;
+}
+.screed .where:after {
+    content: '.';
+}
+.screed .location {
+}
+.screed .location:after {
+    content: ' - ';
+}
+.screed .place {
+}
+.screed .place:after {
+    content: ' -- ';
+}
+.screed .when {
+}
+.screed p {
+    margin: 0;
+}
+.screed .comm {
+    margin: 0 0 5mm 0;
+}
+.screed .char {
+    margin: 0 0 5mm 6.75cm;
+    text-transform: uppercase;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    page-break-before: auto;
+}
+.screed .corr {
+    margin: -5mm 4.5cm 5mm 5.5cm;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    page-break-before: auto;
+}
+.screed .corr:before {
+    content: '(';
+}
+.screed .corr:after {
+    content: ')';
+}
+.screed .text {
+    margin: -5mm 3.75cm 5mm 3.75cm;
+    page-break-inside: auto;
+    page-break-after: auto;
+    page-break-before: avoid;
+}
+.screed .subt
+{
+    margin-left: 2.75cm;
+    margin-right: 4.75cm;
+}
+.screed .titr
+{
+    margin: 0 3.5cm 5mm 4.55cm;
+    padding-left: 1cm;
+    padding-top: 5mm;
+}
+.screed .titr:before
+{
+    content: 'ТИТР:  ';
+    float: left;
+    margin: -5mm 0 0 -5.55cm;
+}
+
+@media print {
+    html,
+    body,
+    .pages,
+    .screed {
+        color: #000;
+        background: #fff none;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    body {
+        counter-reset: page 1;
+    }
+
+    .screed {
+        min-height: 100%;
+/*        font-size: 11.5pt;*/
+    }
+
+    .screed * {
+/*        font-size: 11.5pt;*/
+    }
+
+    .screed fieldset {
+        display: block !important;
+    }
+
+    .screed .contact {
+        margin: 90mm 0 0 70.5mm;
+    }
+
+    header, aside {
+        display: none;
+    }
+
+    @page {
+        size: A4 portrait;
+        margin: 20mm 20mm 12.5mm 35mm;
+        counter-increment: page;
+    }
+}
+

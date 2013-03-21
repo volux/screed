@@ -1,63 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8"/>
-    <title>Screed</title>
-    <link href="/css/style.css" rel="stylesheet" media="all" class="template"/>
-    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-</head>
-<body>
-<header>
-
-</header>
-<article class="screed">
-    <section>
-        <ul>
-            <li class="where">нат</li>
-            <li class="lock">Локейшен</li>
-            <li class="place">Площадка</li>
-            <li class="when">День</li>
-        </ul>
-        <div>
-            <p class="comm">Описание</p>
-            <p class="char">Персонаж</p>
-            <p class="corr">ремарка</p>
-            <p class="text">Реплика</p>
-            <p class="titr">Титр</p>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Screed</title>
+        <link href="/css/screed.css" rel="stylesheet" media="all" class="template"/>
+        <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    </head>
+    <body>
+        <div class="pages">
+            <article class="screed">
+                <fieldset>
+                    <label class="title">Title</label>
+                    <label class="author">Author Name</label>
+                    <label class="from">original</label>
+                    <label class="contact">Agent Name, +0(000)0000000, agent@mail.me</label>
+                </fieldset>
+                <section>
+                    <ul>
+                        <li class="where">Nat</li>
+                        <li class="location">Location</li>
+                        <li class="when">Day</li>
+                    </ul>
+                    <div>
+                        <p class="comm">...</p>
+                    </div>
+                </section>
+            </article>
         </div>
-    </section>
-    <section role="skip">
-        <ul>
-            <li class="where">нат</li>
-            <li class="lock">Локейшен 1</li>
-            <li class="place">Площадка 1</li>
-            <li class="when">День</li>
-        </ul>
-        <div>
-            <p class="comm">Описание 1</p>
-            <p class="char">Персонаж 1</p>
-            <p class="corr">ремарка 1</p>
-            <p class="text">Реплика 1</p>
-            <p class="titr">Титр 1</p>
-        </div>
-    </section>
-    <section role="sub">
-        <ul>
-            <li class="where">нат</li>
-            <li class="lock">Локейшен 2</li>
-            <li class="place">Площадка 2</li>
-            <li class="when">День</li>
-        </ul>
-        <div>
-            <p class="comm">Описание 2</p>
-            <p class="char">Персонаж 2</p>
-            <p class="corr">ремарка 2</p>
-            <p class="text">Реплика 2</p>
-            <p class="titr">Титр 2</p>
-        </div>
-    </section>
-</article>
-<script src="/js/jquery.min.js"></script>
-<script src="/js/logic.js"></script>
-</body>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/logic.js"></script>
+    </body>
 </html>
