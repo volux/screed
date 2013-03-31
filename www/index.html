@@ -1,33 +1,200 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8"/>
-        <title>Screed</title>
-        <link href="/css/screed.css" rel="stylesheet" media="all" class="template"/>
-        <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-    </head>
-    <body>
-        <div class="pages">
-            <article class="screed">
-                <fieldset>
-                    <label class="title">Title</label>
-                    <label class="author">Author Name</label>
-                    <label class="from">original</label>
-                    <label class="contact">Agent Name, +0(000)0000000, agent@mail.me</label>
-                </fieldset>
-                <section>
-                    <ul>
-                        <li class="where">Nat</li>
-                        <li class="location">Location</li>
-                        <li class="when">Day</li>
-                    </ul>
-                    <div>
-                        <p class="comm">...</p>
-                    </div>
-                </section>
-            </article>
-        </div>
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/logic.js"></script>
-    </body>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>Screed</title>
+    <link href="/css/app.css" rel="stylesheet" media="all" class="template" />
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body>
+<header class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <a class="brand" href="/" title="SCReenplay Easy EDitor">Screed</a>
+        <ul class="nav">
+            <li><a href="//github.com/volux/screed"><i class="icon-github"></i>Code</a></li>
+            <li><a href="//volux.info/screed"><i class="icon-info-sign"></i>About</a></li>
+        </ul>
+        <ul class="nav scr-info">
+            <li class="divider-vertical"></li>
+            <li><a href="#" id="scr_current">Current</a></li>
+            <li class="divider-vertical"></li>
+            <li><a href="#" id="scr_type">Type</a></li>
+            <li class="divider-vertical"></li>
+        </ul>
+    </div>
+</header>
+<div class="scr-pages">
+    <article id="volux" class="screed locked saved">
+        <header class="first-page">
+            <p class="title">Отниму у вас минутку...</p>
+
+            <p class="author">volux.screed</p>
+
+            <p class="from">приквел к Вашим сценариям :)</p>
+
+            <p class="contact">Андрей Скулов, screed@volux.ru</p>
+        </header>
+        <section>
+            <header>
+                <span class="where">инт</span>
+                <span class="location">screed.pro</span>
+                <span class="when">день</span>
+            </header>
+            <div>
+                <p class="action">Сценарист впервые здесь. Оглядывается. Вдруг:</p>
+
+                <p class="character">Screed</p>
+
+                <p class="parenthetical">искренне</p>
+
+                <p class="dialog">Добро пожаловать на сайт!</p>
+
+                <p class="character">Сценарист</p>
+
+                <p class="dialog">Спасибо.</p>
+
+                <p class="parenthetical">озадачен</p>
+
+                <p class="dialog">Пустовато как-то... С чего здесь нужно начинать?</p>
+
+                <p class="character">Screed</p>
+
+                <p class="dialog">Отниму у вас минутку...</p>
+
+                <p class="character">Сценарист</p>
+
+                <p class="dialog">Ладно, но не больше!</p>
+
+                <p class="character">Screed</p>
+
+                <p class="dialog">Просто начинайте писать ваш сценарий. Чтобы начать новый текст, нажмите Ctrl+E, затем
+                    F2
+                    ...Запомните одно: здесь большинство необходимых действий выполняется с
+                    помощью клавиатуры.</p>
+
+                <p class="character">Сценарист</p>
+
+                <p class="dialog">Получается, что мышь почти не нужна? Совсем?</p>
+
+                <p class="character">Screed</p>
+
+                <p class="dialog">Не выбрасывайте её пока...</p>
+
+                <p class="parenthetical">улыбается</p>
+
+                <p class="dialog">Кое-что можно сделать и мышью... Но зачем вам отвлекаться?</p>
+
+                <p class="action">Сценарист потянулся к клавиатуре.</p>
+
+                <p class="character">Сценарист</p>
+
+                <p class="dialog">Да-да. У меня в голове уже есть пара первых сцен...</p>
+
+                <p class="character">Screed</p>
+
+                <p class="parenthetical">перебивает</p>
+
+                <p class="dialog">Вам поможет клавиша F1...</p>
+
+                <p class="action">Сценарист нажимает Ctrl+E.</p>
+
+                <p class="titr">The End</p>
+            </div>
+        </section>
+    </article>
+</div>
+<aside class="scr-help scr-min">
+    <ul class="nav nav-list">
+        <li><a class="a-help"><i class="icon-question-sign"></i>Help</a><code>F1</code></li>
+    </ul>
+    <ul class="nav nav-list scr-command hide">
+        <li><a href="/#!clean"><i class="icon-file"></i>Clean</a><code>Ctrl</code> <code>E</code></li>
+        <li><a href="/#!open"><i class="icon-cloud-download"></i>Open</a><code>Ctrl</code> <code>O</code></li>
+        <li><a href="/#!save"><i class="icon-cloud-upload"></i>Save</a><code>Ctrl</code> <code>S</code></li>
+        <li><a href="/#!html"><i class="icon-file-alt"></i>Html</a><code>Ct</code> <code>Sh</code>
+            <code>S</code></li>
+        <li><a href="/#!lock"><i class="icon-lock"></i>Lock</a><code>Ctrl</code> <code>L</code></li>
+        <li><a href="/#!print"><i class="icon-print"></i>Print</a><code>Ctrl</code> <code>P</code></li>
+        <li><a href="/#!scenes"><i class="icon-reorder"></i>Scenes</a><code>Shift</code> <code>F1</code></li>
+    </ul>
+    <dl class="scr-help-full hide">
+        <dt><code>??</code></dt>
+        <dd>Главный ответ на главный вопрос: Ваши сценарии хранятся только у Вас в компьютере или в Ваших
+            облачных хранилищах, и никто не имеет к ним доступа, если вы не пожелаете обратного
+        </dd>
+
+        <dt><code>F2</code></dt>
+        <dd>активация редактируемой в последний раз строки или поля</dd>
+
+        <dt><code>F3</code></dt>
+        <dd>стандартное поле поиска по тексту</dd>
+
+        <dt><code>Esc</code></dt>
+        <dd>отмена изменений в абзаце (если были); выход курсора из текста (так быстрее пролистывать текст)</dd>
+
+        <dt><code>PgUp</code> <code>PgDn</code></dt>
+        <dd>перейти на предыдущую / следующую сцену</dd>
+
+        <dt><code>Shift</code> <code>PgUp</code> <code>PgDn</code></dt>
+        <dd>перемещение сцены выше / ниже</dd>
+
+        <dt><code>Shift</code> <code>Home</code> <code>End</code></dt>
+        <dd>первый / последний абзац в сцене</dd>
+
+        <dt><code>Shift</code> <code>F2</code></dt>
+        <dd>открыть / скрыть титульный лист</dd>
+
+        <dt><code>Ctrl</code> <code>Enter</code></dt>
+        <dd>начинаем новую сцену: если курсор в начале абзаца - он попадёт в новую сцену; в конце - останется в
+            текущей
+        </dd>
+
+        <dt><code>Ctrl</code> <code>Del</code></dt>
+        <dd>соединить следующую сцену с текущей</dd>
+
+        <dt><code>Ctrl</code> <code>Right</code> <code>Left</code></dt>
+        <dd>изменить сцену на подсцену / со скрытым хронометражом и обратно</dd>
+
+        <dt><code>Ctrl</code> <code>Home</code> <code>End</code></dt>
+        <dd>перейти на первую / последнюю сцену</dd>
+
+        <dt><code>Tab</code> <code>Shift</code> <code>Tab</code></dt>
+        <dd>последовательно изменять тип абзаца (Shift: в обратном порядке) / перемещение по полям в заголовке
+            сцены с удобным выделением (позиционированием)
+        </dd>
+    </dl>
+</aside>
+<script src="//yandex.st/jquery/1.9.1/jquery.min.js"></script>
+<script src="//yandex.st/jquery-ui/1.10.2/jquery-ui.min.js"></script>
+<script src="//api.filepicker.io/v1/filepicker.js"></script>
+<script src="//plugs.googlecode.com/svn-history/r219/trunk/plugs/ui/jquery/pnotify/static/pnotify/1.2.0/jquery.pnotify.js"></script>
+<script src="/js/jquery.screed.js"></script>
+<script src="/js/app.js"></script>
+<div id="scr_clean" hidden="hidden">
+    <article class="">
+        <header class="first-page">
+            <p class="title">Название</p>
+
+            <p class="author">Имя Автора</p>
+
+            <p class="from">оригинальный сценарий</p>
+
+            <p class="contact">Имя Агента, +0(000)0000000, agent@mail.me</p>
+        </header>
+        <section>
+            <header>
+                <span class="where">нат</span>
+                <span class="location">Местоположение</span>
+                <span class="when">день</span>
+            </header>
+            <div>
+                <p class="action">…</p>
+            </div>
+        </section>
+    </article>
+</div>
+<div id="scr_confirm" title="Вы уверены?" hidden="hidden">
+    <p><i class="icon-warning-sign"></i>Рабочий сценарий не сохранён. Продолжить?</p>
+</div>
+</body>
 </html>

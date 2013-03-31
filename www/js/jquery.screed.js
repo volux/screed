@@ -1,45 +1,45 @@
-/**
- * jquery.screed.js
- */
-(function($){
+/* jquery.screed.js */
+
+(function ($) {
 
     "use strict";
 
-    $.fn.screed = function(options) {
+    $.fn.screed = function (options) {
 
         if (!window.getSelection) {
-            options.notify.error('need modern browser');
+            options.notify.error('Need modern browser!');
             return this
         }
 
         var defaults = {
 
-            key: '.screed',
+            key:       '.screed',
+            help:      '.scr-help',
+            stylePath: '/css/screed.css',
 
-            classes: ['comm', 'char', 'corr', 'text', 'titr'],
+            classes: ['action', 'character', 'parenthetical', 'dialog', 'titr', 'transition'],
 
             addType: {
-                char: ['corr', '...'],
-                corr: ['text', 'Реплика'],
-                default: ['comm', 'Описание']
+                char:    ['parenthetical', '…'],
+                corr:    ['dialog', '…'],
+                default: ['action', '…']
             },
 
             el: {
-                tittle: 'fieldset',
-                field: 'label',
-                scene: 'section',
-                head: 'ul',
-                line: 'li',
+                tittle: '.first-page',
+                scene:  'section',
+                head:   'header',
+                line:   'span',
                 action: 'div',
-                para: 'p',
-                ed: 'span',
-                sp: '&nbsp;',
-                empty: '...'
+                para:   'p',
+                ed:     'tt',
+                sp:     '&nbsp;',
+                empty:  '…'
             },
 
             notify: {
 
-                info: function(msg) {
+                info: function (msg) {
                     alert(msg)
                 },
 
@@ -52,18 +52,28 @@
                 }
             },
 
-            onOpen: function ($screed) {
-                $screed.html();
+            onCurrent: function ($el) {
+                console.log($el);
                 options.notify.error('need custom implementation')
             },
 
-            onSave: function ($screed) {
-                $screed.html();
+            onClean: function ($parent, afterClean) {
+                console.log($parent, afterClean);
                 options.notify.error('need custom implementation')
             },
 
-            onClean: function ($screed) {
-                $screed.html();
+            onOpen: function (afterOpen) {
+                console.log(afterOpen);
+                options.notify.error('need custom implementation')
+            },
+
+            onSave: function (file, screed, afterWrite) {
+                console.log(file, screed, afterWrite);
+                options.notify.error('need custom implementation')
+            },
+
+            confirm: function (label, callback) {
+                console.log(label, callback);
                 options.notify.error('need custom implementation')
             }
         };
@@ -71,34 +81,29 @@
 
         var classes = {
             current: 0,
-           	next: (options.classes.length > 0)? 1: 0
+            next:    (options.classes.length > 0) ? 1 : 0
         };
 
-        return this.each(function() {
-
-            var $screed = $(this);
-            if ($screed.data(options.key)) {
-                return $screed
-            }
-            $screed.data(options.key, true);
+        return this.each(function () {
 
             var
+                $screed = $(this),
                 un = {
-                    defined: function(some) {
+                    defined: function (some) {
                         return ($.type(some) === 'undefined')
                     }
                 },
 
                 select = {
 
-                    add: function(bean) {
+                    add: function (bean) {
                         bean.sel.removeAllRanges();
                         bean.sel.addRange(bean.range);
                     },
 
                     bean: function (node) {
                         var bean = {
-                            sel: window.getSelection(),
+                            sel:   window.getSelection(),
                             range: document.createRange()
                         };
                         if (!un.defined(node)) {
@@ -111,9 +116,9 @@
                         var sel = select.bean().sel,
                             range = {
                                 start: sel.anchorOffset,
-                                end: sel.focusOffset
+                                end:   sel.focusOffset
                             };
-                        range.length = (range.start >= range.end)? (range.start - range.end):(range.end - range.start);
+                        range.length = (range.start >= range.end) ? (range.start - range.end) : (range.end - range.start);
                         return range
                     },
 
@@ -133,7 +138,7 @@
 
                 find = {
 
-                    next: function($el) {
+                    next: function ($el) {
                         var $next = $el.next().find(options.el.ed).first();
                         if (!$next.length) {
                             $next = find.firstInNext($el)
@@ -141,7 +146,7 @@
                         return $next
                     },
 
-                    prev: function($el) {
+                    prev: function ($el) {
                         var $prev = $el.prev().find(options.el.ed).first();
                         if (!$prev.length) {
                             $prev = find.lastInPrev($el)
@@ -149,7 +154,7 @@
                         return $prev
                     },
 
-                    firstInNext: function($el) {
+                    firstInNext: function ($el) {
                         var $next = $el.parent().next().find(options.el.ed).first();
                         if (!$next.length) {
                             $next = $el.closest(options.el.scene).next().find(options.el.ed).first()
@@ -157,7 +162,7 @@
                         return $next
                     },
 
-                    lastInPrev: function($el) {
+                    lastInPrev: function ($el) {
                         var $prev = $el.parent().prev().find(options.el.ed).last();
                         if (!$prev.length) {
                             $prev = $el.closest(options.el.scene).prev().find(options.el.ed).last()
@@ -168,13 +173,13 @@
 
                 jump = {
 
-                    next: function($el) {
+                    next: function ($el) {
                         var $next = find.next($el);
                         $next.focus();
                         return false
                     },
 
-                    prev: function($el) {
+                    prev: function ($el) {
                         var $prev = find.prev($el);
                         if ($prev.length) {
                             $prev.focus();
@@ -185,47 +190,47 @@
                         return false
                     },
 
-                    firstAction: function($el){
+                    firstAction: function ($el) {
                         $el.prevAll().last().find(options.el.ed).first().focus();
                         return false
                     },
 
-                    lastAction: function($el){
+                    lastAction: function ($el) {
                         $el.nextAll().last().find(options.el.ed).first().focus();
                         return false
                     },
 
-                    prevAction: function($el) {
+                    prevAction: function ($el) {
                         find.lastInPrev($el).focus();
                         return false
                     },
 
-                    itAction: function($el) {
+                    itAction: function ($el) {
                         find.firstInNext($el).focus();
                         return false
                     },
 
-                    toNewNext: function($el, text) {
+                    toNewNext: function ($el, text) {
                         ed.action($el, text);
                         return jump.next($el)
                     },
 
-                    prevScene: function($el) {
+                    prevScene: function ($el) {
                         $el.closest(options.el.scene).prev().find(options.el.ed).first().focus();
                         return false
                     },
 
-                    nextScene: function($el) {
+                    nextScene: function ($el) {
                         $el.closest(options.el.scene).next().find(options.el.ed).first().focus();
                         return false
                     },
 
-                    firstScene: function($el) {
+                    firstScene: function ($el) {
                         $el.closest(options.key).find(options.el.scene).first().find(options.el.ed).first().focus();
                         return false
                     },
 
-                    lastScene: function($el) {
+                    lastScene: function ($el) {
                         $el.closest(options.key).find(options.el.scene).last().find(options.el.ed).first().focus();
                         return false
                     }
@@ -233,7 +238,7 @@
 
                 scene = {
 
-                    cut: function($el, $ed, range) {
+                    cut: function ($el, $ed, range) {
                         if ($ed.text().length == 1) {
                             $ed.text(options.el.empty)
                         }
@@ -265,13 +270,13 @@
                             }
                         }
                         $clone.find(options.el.head).trigger('editable');
-                        $clone.find(options.el.action).trigger('editable').find(options.el.para).first().attr('class', 'comm');
+                        $clone.find(options.el.action).trigger('editable').find(options.el.para).first().attr('class', 'action');
                         $screed.data('select', true);
                         $clone.removeAttr('role').find(options.el.ed).first().focus();
                         return false
                     },
 
-                    glue: function($el) {
+                    glue: function ($el) {
                         var $next = $el.closest(options.el.scene).next();
                         $el.after($next.find(options.el.action).children());
                         $next.remove();
@@ -297,7 +302,7 @@
 
                     shift: {
 
-                        pop: function($el) {
+                        pop: function ($el) {
                             var $scene = $el.closest(options.el.scene);
                             switch ($scene.attr('role')) {
                                 case 'skip':
@@ -312,7 +317,7 @@
                             return false
                         },
 
-                        deep: function($el) {
+                        deep: function ($el) {
                             var $scene = $el.closest(options.el.scene);
                             if (!$scene.prev().length) {
                                 return false
@@ -334,7 +339,20 @@
 
                 ed = {
 
-                    focus: function() {
+                    input: function () {
+                        $screed.removeClass('saved');
+                        return true
+                    },
+
+                    type: function () {
+                        var $el = $(this).parent();
+                        if ($el.is(options.el.para) && $el.prevAll().length) {
+                            return ed.style($el, 1)
+                        }
+                        return false
+                    },
+
+                    focus: function () {
                         var $ed = $(this),
                             $el = $ed.parent();
                         if ($screed.data('select') && $el.is(options.el.line)) {
@@ -345,10 +363,10 @@
                         if ($el.is(options.el.para) && ($ed.text() == options.el.empty)) {
                             $ed.html(options.el.sp)
                         }
-                        $screed.trigger({type: 'current', ed: $ed})
+                        $screed.trigger({type: 'current', el: $el})
                     },
 
-                    blur: function() {
+                    blur: function () {
                         var $ed = $(this),
                             $el = $ed.parent();
                         $el.data('revert', '');
@@ -356,10 +374,10 @@
                             var $para = $ed.find(options.el.para);
                             if ($para.length) {
                                 $para.detach();
-                                $ed.wrapInner('<p/>');
+                                $ed.wrapInner(document.createElement(options.el.para));
                                 var $last = $ed.find(options.el.para);
                                 $el.after($last);
-                                $last.addClass('comm').trigger('el');
+                                $last.addClass('action').trigger('el');
                                 $el.after($para);
                                 $para.trigger('el')
                             } else {
@@ -367,16 +385,15 @@
                             }
                         }
                         if ($el.is(options.el.para) &&
-                                ($ed.html() == options.el.sp || !$ed.text().length) &&
-                                $el.siblings().length &&
-                                !$el.next().is('.corr')
+                            ($ed.html() == options.el.sp || !$ed.text().length) &&
+                            $el.siblings().length && !$el.next().is('.parenthetical')
                             ) {
                             $screed.trigger({type: 'current', ed: find.prev($el)});
                             $el.remove()
                         }
                     },
 
-                    style: function($el, revert) {
+                    style: function ($el, revert) {
                         if (options.classes.length) {
                             classes.current = $.inArray($el.attr('class'), options.classes);
                             if (revert == 1) {
@@ -397,11 +414,12 @@
                                 .removeClass(options.classes[classes.current])
                                 .addClass(newStyle)
                         }
+                        $screed.trigger({type: 'current', el: $el});
                         return false
                     },
 
-                    action: function($el, text) {
-                        var $p = $('<'+options.el.para+'>'),
+                    action: function ($el, text) {
+                        var $p = $(document.createElement(options.el.para)),
                             cls = $el.attr('class');
                         if (text == '') {
                             text = (!un.defined(options.addType[cls]) ? options.addType[cls][1] : options.el.sp)
@@ -411,8 +429,8 @@
                         $p.attr('class', cls).text(text).trigger('el')
                     },
 
-                    keydown: function(event) {
-                        console.log(event.which);
+                    keydown: function (event) {
+                        //console.log(event.which);
                         var $ed = $(this),
                             tail = '';
 
@@ -424,7 +442,7 @@
                             range = select.range();
                         if (event.ctrlKey && !event.shiftKey) {
 
-                            switch(event.which) {
+                            switch (event.which) {
 
                                 case 13:
                                     /* ctrl + enter - new scene */
@@ -468,7 +486,14 @@
                                 case 69:
                                     /* ctrl + e - new screenplay */
                                     event.preventDefault();
-                                    $screed.trigger('empty');
+                                    $screed.trigger('clean');
+                                    return false;
+                                    break;
+
+                                case 76:
+                                    /* ctrl + l - lock screenplay */
+                                    event.preventDefault();
+                                    $screed.trigger('lock');
                                     return false;
                                     break;
 
@@ -491,10 +516,9 @@
                                     break
                             }
 
-                        } else
-                        if (event.shiftKey && !event.ctrlKey) {
+                        } else if (event.shiftKey && !event.ctrlKey) {
 
-                            switch(event.which) {
+                            switch (event.which) {
 
                                 case 8:
                                     /* shift + backspace - delete, after empty jump to prev */
@@ -568,9 +592,9 @@
                                     break;
 
                                 case 112:
-                                    /* shift + f1 - show statistic */
+                                    /* shift + f1 - show scenes list */
                                     event.preventDefault();
-                                    options.notify.info('show statistic from span');
+                                    $screed.trigger('scenes');
                                     return false;
                                     break;
 
@@ -584,13 +608,22 @@
                                     break
                             }
 
+                        } else if (event.ctrlKey && event.shiftKey) {
+                            switch (event.which) {
+                                case 83:
+                                    /* ctrl + shift + s - save screenplay as standalone html*/
+                                    event.preventDefault();
+                                    $(options.key).trigger('html');
+                                    return false;
+                                    break;
+                            }
                         } else {
-                            //console.log(event.which);
+
                             switch (event.which) {
 
                                 case 8:
                                     /* backspace - delete, after empty jump to prev */
-                                    if ($el.is(options.el.line) || $el.is('.char')) {
+                                    if ($el.is(options.el.line) || $el.is('.character')) {
 //                                        $ed.autocomplete('enable');
                                         return true
                                     }
@@ -623,7 +656,7 @@
                                     }
                                     if (range.end == 0) {
                                         tail = $ed.text();
-                                        $ed.text('...');
+                                        $ed.text(options.el.empty);
                                         return jump.toNewNext($el, tail)
                                     }
                                     tail = $ed.text().substr(range.end);
@@ -712,7 +745,7 @@
                                         return jump.next($el);
 //                                        } else {
 //                                           return true
-//                                        }
+//                                       }
                                     }
                                     break;
 
@@ -730,7 +763,7 @@
                                 case 112:
                                     /* f1 - show hotkeys help */
                                     event.preventDefault();
-                                    options.notify.info('show hotkeys help from span');
+                                    $(options.help).trigger('help');
                                     return false;
                                     break;
 
@@ -747,26 +780,32 @@
 
                 editable = {
 
-                    tittle: function() {
-                        editable.prep($(this).prop('contentEditable', false), options.el.field)
+                    tittle: function () {
+                        var $tittle = $(this);
+                        editable.prep($tittle.prop('contentEditable', false), options.el.para);
+                        $tittle.on('input', '.title', function () {
+
+                            $('title').text('Screed: ' + $(this).text());
+
+                        })
                     },
 
-                    head: function() {
+                    head: function () {
                         editable.prep($(this).prop('contentEditable', false), options.el.line)
                     },
 
-                    action: function() {
+                    action: function () {
                         editable.prep($(this).prop('contentEditable', true), options.el.para)
                     },
 
-                    prep: function($section, find) {
+                    prep: function ($section, find) {
                         $section.find(find).trigger('el')
                     },
 
-                    el: function(e) {
+                    el: function (e) {
                         e.stopPropagation();
                         var $el = $(this),
-                            $ed = $('<'+options.el.ed+'/>').prop('contentEditable', true);
+                            $ed = $(document.createElement(options.el.ed)).prop('contentEditable', true);
                         $el
                             .prop('contentEditable', false)
                             .removeAttr('style')
@@ -778,77 +817,267 @@
                 screed = {
 
                     init: function () {
-                        $(this).find(options.el.tittle+', '+options.el.head+', '+options.el.action).trigger('editable');
-                    },
-
-                    current: function(e) {
-                        $(this).find('.current').removeClass('current');
-                        e.ed.addClass('current')
-                    },
-
-                    focus: function() {
-                        var $current = $(this).find('.current');
-                        if (!$current.length) {
-                            $current = $(this).find(options.el.scene+' '+ options.el.ed).first()
+                        var $screed = $(this);
+                        if (!screed.is.locked()) {
+                            $screed.find(options.el.tittle + ', ' + options.el.head + ', ' + options.el.action).trigger('editable')
                         }
-                        $current.focus()
+                        return $screed
                     },
 
-                    tittle: function() {
+                    current: function (e) {
+                        var $screed = $(this);
+                        options.onCurrent(e.el);
+                        $screed.find('.current').removeClass('current');
+                        if (!un.defined(e.el)) {
+                            e.el.children(0).addClass('current');
+                        }
+                        return $screed
+                    },
+
+                    focus: function () {
+                        var $screed = $(this),
+                            $current = $screed.find('.current');
+                        if (!$current.length) {
+                            $current = $screed.find(options.el.scene + ' ' + options.el.ed).first()
+                        }
+                        $current.focus();
+                        return $screed
+                    },
+
+                    tittle: function () {
                         var $screed = $(this),
                             $tittle = $screed.find(options.el.tittle);
                         $tittle.toggle();
                         if (!$tittle.is(':hidden')) {
                             $tittle.find(options.el.ed).first().focus()
                         } else {
-                            $screed.find(options.el.scene+' '+options.el.ed).first().focus()
+                            $screed.find(options.el.scene + ' ' + options.el.ed).first().focus()
+                        }
+                        return $screed
+                    },
+
+                    is: {
+
+                        locked: function () {
+                            if ($screed.is('.locked')) {
+                                options.notify.info('Screenplay locked.');
+                                return true
+                            }
+                            return false
+                        },
+
+                        saved: function () {
+                            if (!$screed.is('.saved')) {
+                                options.notify.info('Screenplay not saved.');
+                                return false
+                            }
+                            return true
+                        },
+
+                        empty: function () {
+                            if ($screed.is('.empty')) {
+                                options.notify.info('Screenplay empty.');
+                                return true
+                            }
+                            return false
                         }
                     },
 
-                    save: function() {
-                        var $clone = $(this).clone();
-                        $clone
+                    restore: function ($screed) {
+                        return $screed
                             .find(options.el.ed).each(function () {
                                 var $ed = $(this);
                                 $ed.parent().html($ed.text());
                             }).end()
+                            .find(options.el.tittle).removeAttr('style').end()
                             .find('*').removeAttr('contenteditable').end()
-                            .wrap('<div/>')
-                        ;
-                        options.onSave($clone.parent().html())
+                            .html()
                     },
 
-                    open: function() {
-                        options.onOpen($(this))
+                    plain: function () {
+                        var $screed = $(this);
+                        $screed.html(screed.restore($screed));
+                        return $screed
+                    },
+
+                    save: function () {
+                        var $screed = $(this);
+                        if (!$screed.is('.saved')) {
+                            var afterWrite = function (file) {
+                                    $screed.addClass('saved').parent().data('file', file)
+                                },
+
+                                forSave = function ($screed) {
+                                    /** TODO add ID with user ID */
+                                    return '<?xml version="1.0" encoding="utf-8"?>\n' +
+                                        '<article class="' + $screed.attr('class') + '">\n' +
+                                        screed.restore($screed.clone()) +
+                                        '</article>'
+                                },
+
+                                fileData = function ($screed) {
+                                    var $parent = $screed.parent(),
+                                        file = $parent.data('file');
+                                    if ($.isPlainObject(file)) {
+                                        return file
+                                    }
+                                    return $screed.find('.title').text() + ' by ' + $screed.find('.author').text()
+                                };
+
+                            options.onSave(fileData($screed), forSave($screed), afterWrite);
+                        }
+                        return $screed
+                    },
+
+                    html: function () {
+                        var $screed = $(this);
+                        var afterWrite = function (file) {
+
+                            },
+
+                            forSave = function ($screed, style) {
+                                var $items = $('<div>' + screed.restore($screed.clone()) + '</div>');
+                                $items
+                                    .find('.parenthetical').each(function () {
+                                        var $p = $(this);
+                                        $p.text('(' + $p.text() + ')')
+                                    }).end()
+                                    .find('.where').each(function () {
+                                        var $p = $(this);
+                                        $p.text($p.text() + '.')
+                                    }).end()
+                                    .find('.location').each(function () {
+                                        var $p = $(this);
+                                        $p.text($p.text() + ' -')
+                                    }).end()
+                                    .find('.titr').each(function () {
+                                        $(this).before($(document.createElement(options.el.para)).attr('class', 'b-titr').text('titr:'))
+                                    }).end()
+                                ;
+
+                                return '<!DOCTYPE html>\n' +
+                                    '<html>' +
+                                    '<head>' +
+                                    '<meta charset="UTF-8"/>' +
+                                    '<title>Screed: ' + $screed.find('.title').text() + '</title>' +
+                                    '<style type="text/css">' +
+                                    style +
+                                    '</style>' +
+                                    '</head>' +
+                                    '<body class="scr-alone">' +
+                                    '<div class="scr-pages">' +
+                                    '<article class="screed">\n' +
+                                    $items.html() +
+                                    '</article>' +
+                                    '</div>' +
+                                    '<a class="scr-go" href="https://screed.pro">made by Screed</a>' +
+                                    '</body>' +
+                                    '</html>'
+                            },
+
+                            fileData = function ($screed) {
+                                return $screed.find('.title').text() + ' by ' + $screed.find('.author').text()
+                            };
+                        $.get(options.stylePath, function (style) {
+                            options.onSave(fileData($screed), forSave($screed, style), afterWrite, true);
+                        });
+                        return $screed
+                    },
+
+                    open: function () {
+                        var $screed = $(this),
+
+                            afterRead = function (screed) {
+                                var $parent = $screed.parent().html(screed);
+                                $screed = $parent.find(options.key).first();
+                                $screed.addClass('saved').screed(options);
+                                $('title').text('Screed: ' + $screed.find('.title').text());
+                            },
+
+                            afterPick = function (file) {
+                                $screed.parent().data('file', file)
+                            };
+
+                        if (!screed.is.saved()) {
+                            options.confirm('Open', function () {
+                                options.onOpen(afterPick, afterRead)
+                            })
+                        } else {
+                            options.onOpen(afterPick, afterRead)
+                        }
+                        return $screed
                     },
 
                     clean: function () {
-                        options.onClean($(this))
+                        var $parent = $(this).parent(),
+
+                            afterClean = function ($screed) {
+                                $screed.attr('class', options.key.substr(1) + ' saved').screed(options);
+                                $('title').text('Screed: ' + $screed.find('.title').text())
+                            };
+
+                        if (!screed.is.saved()) {
+                            options.confirm('New', options.onClean($parent, afterClean))
+                        } else {
+                            options.onClean($parent, afterClean)
+                        }
+                        return $parent.children(0)
+                    },
+
+                    print: function () {
+                        window.print();
+                        return $screed
+                    },
+
+                    scenes: function () {
+                        options.notify.error('Not implemented');
+                        return $screed
+                    },
+                    lock:   function () {
+                        var $screed = $(this);
+                        if ($screed.is('#volux')) {
+                            return false
+                        }
+                        $screed.toggleClass('locked');
+                        if ($screed.is('.locked')) {
+                            $screed.trigger('plain')
+                        } else {
+                            $screed.trigger('init')
+                        }
+                        return false
                     }
                 };
 
-            return $screed
-                .on('keydown',  options.el.ed, ed.keydown)
-                .on('blur',     options.el.ed, ed.blur)
-                .on('focus',    options.el.ed, ed.focus)
+            $screed
+                .on('keydown', options.el.ed, ed.keydown)
+                .on('blur', options.el.ed, ed.blur)
+                .on('focus', options.el.ed, ed.focus)
+                .on('input', options.el.ed, ed.input)
+                .on('type', options.el.ed, ed.type)
 
                 .on('editable', options.el.tittle, editable.tittle)
-                .on('editable', options.el.head,   editable.head)
+                .on('editable', options.el.head, editable.head)
                 .on('editable', options.el.action, editable.action)
-                .on('el',       options.el.field,  editable.el)
-                .on('el',       options.el.line,   editable.el)
-                .on('el',       options.el.para,   editable.el)
 
-                .on('init',     screed.init)
-                .on('save',     screed.save)
-                .on('open',     screed.open)
-                .on('clean',    screed.clean)
-                .on('current',  screed.current)
+                .on('el', options.el.line, editable.el)
+                .on('el', options.el.para, editable.el)
+
+                .on('init', screed.init)
+                .on('clean', screed.clean)
+                .on('open', screed.open)
+                .on('save', screed.save)
+                .on('html', screed.html)
+                .on('lock', screed.lock)
+                .on('plain', screed.plain)
+                .on('print', screed.print)
+                .on('scenes', screed.scenes)
+
+                .on('current', screed.current)
                 .on('currentFocus', screed.focus)
-                .on('tittleFocus',  screed.tittle)
+                .on('tittleFocus', screed.tittle)
 
                 .trigger('init')
         })
-    };
+    }
 
 })(jQuery);

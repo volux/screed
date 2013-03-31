@@ -1,0 +1,177 @@
+/* app.css */
+@charset "UTF-8";
+
+@import "//raw.github.com/addyosmani/jquery-ui-bootstrap/gh-pages/assets/css/bootstrap.min.css";
+@import "//raw.github.com/addyosmani/jquery-ui-bootstrap/gh-pages/assets/css/font-awesome.min.css";
+@import "//raw.github.com/addyosmani/jquery-ui-bootstrap/gh-pages/css/custom-theme/jquery-ui-1.10.1.custom.css";
+@import "//plugs.googlecode.com/svn-history/r219/trunk/plugs/ui/jquery/pnotify/static/pnotify/1.2.0/jquery.pnotify.default.css";
+@import "//plugs.googlecode.com/svn-history/r219/trunk/plugs/ui/jquery/pnotify/static/pnotify/1.2.0/jquery.pnotify.default.icons.css";
+@import "screed.css";
+
+body {
+    background-color: rgb(85, 85, 90);
+}
+
+.navbar-fixed-top {
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .4)
+}
+
+.navbar .brand {
+    width:       90px;
+    height:      30px;
+    margin:      5px 6px 0 5px;
+    padding:     0;
+    background:  url('data:image/png;base64,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') no-repeat;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow:    hidden;
+}
+
+.ui-pnotify-title {
+    font-size:   14px !important;
+    line-height: 14px;
+}
+
+.ui-pnotify-history-pulldown {
+    text-align: center;
+}
+
+.scr-help {
+    box-sizing:                 border-box;
+    position:                   fixed;
+    top:                        40px;
+    left:                       0;
+    margin:                     0;
+    padding:                    5px 0 0 0;
+    background-color:           rgba(250, 250, 250, .6);
+    border-bottom-right-radius: 8px;
+    box-shadow:                 0 1px 3px rgba(0, 0, 0, .4);
+}
+
+.scr-help.scr-open {
+    width: 160px;
+}
+
+.scr-help.scr-min {
+    width: 115px;
+}
+
+.scr-help.scr-full {
+    width:                      260px;
+    bottom:                     0;
+    border-bottom-right-radius: 0;
+    overflow-y:                 auto;
+    overflow-x:                 hidden;
+}
+
+.scr-help dl {
+    padding: 0;
+    margin:  0;
+}
+
+.scr-help dt code {
+    position: relative;
+    left:     80px;
+    top:      -3px;
+}
+
+.scr-help dd {
+    font-size:   8pt;
+    line-height: 9pt;
+    padding:     0;
+    margin:      0 8px 5px 8px;
+}
+
+.scr-help ul {
+    padding: 0 0 5px 5px;
+    margin:  0;
+}
+
+.scr-help li {
+    position: relative;
+}
+
+.scr-help a {
+    width:         135px;
+    display:       inline-block !important;
+    color:         #000000;
+    margin-right:  -75px !important;
+    border-radius: 0 5px 5px 0;
+}
+
+.scr-help.scr-min a {
+    width:        90px;
+    margin-right: -30px !important;
+}
+
+.scr-help a i {
+    margin-right: 4px !important;
+    border-right: transparent 2px solid;
+}
+
+.scr-help a:hover i {
+    color:        #ff0000;
+    border-right: #ff0000 2px solid;
+}
+
+.scr-help .a-help {
+    cursor: pointer;
+}
+
+.scr-help code {
+    color:            #000000;
+    background-color: rgba(0, 0, 0, .1);
+    box-shadow:       1px 1px 3px rgba(0, 0, 0, .4), inset 1px 1px 3px rgba(250, 250, 250, .9), inset -4px -4px 3px rgba(250, 250, 250, .3);
+    text-shadow:      0 1px 0 rgba(255, 255, 255, 0.5);
+    border:           none;
+    font-size:        11px;
+    font-weight:      normal;
+    position:         relative;
+    height:           12px;
+    line-height:      13px;
+    top:              -2px;
+}
+
+.scr-help li:hover code {
+    color: #ff0000;
+}
+
+#dialog-confirm.ui-dialog-content {
+    display: block !important;
+}
+
+#dialog-confirm i {
+    display:   block;
+    font-size: 29pt;
+    float:     left;
+    margin:    0 .5em 0 0;
+    color:     red;
+}
+
+.ui-tooltip {
+    border:           none;
+    color:            #000000;
+    background-color: rgba(0, 0, 0, .1) !important;
+    box-shadow:       1px 1px 6px rgba(0, 0, 0, .4), inset 1px 1px 3px rgba(250, 250, 250, .9), inset -4px -4px 3px rgba(250, 250, 250, .3);
+    text-shadow:      0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+#scr_current {
+    width: 50px
+}
+
+#scr_type {
+    text-transform: capitalize;
+}
+
+@media print {
+    header,
+    aside,
+    .navbar,
+    .nav,
+    .ui-pnotify-history-container,
+    .ui-pnotify,
+    .ui-pnotify-container {
+        display: none !important;
+    }
+}
