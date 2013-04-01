@@ -6,4 +6,4 @@ This code is part of a larger online / offline software system (similar to ERP) 
 
 This system exists and works. Here I am trying to create one refactoring existing code with the division into independent modules.
 
-[Try Screed] (https://screed-volux.rhcloud.com/).
+[Try Screed] (https://screed.pro/).

@@ -18,7 +18,7 @@
                     url:      "/open",
                     data:     {filename: filename},
                     type:     'GET',
-                    dataType: 'xml',
+                    dataType: 'html',
                     cache:    false
                 })
                     .done(afterOpen)
@@ -53,8 +53,8 @@
                         text = sections
                     }
                 }
-                $('#scr_current').text(text);
-                $('#scr_type').text($p.attr('class'));
+                $('#scr_current span').text(text);
+                $('#scr_type span').text($p.attr('class'));
             }
         },
 
@@ -288,10 +288,19 @@
             }
         },
 
+        googleDrive: {
+            clientID: '94663496299.apps.googleusercontent.com'
+        },
+
+        dropbox: {
+            key:     'YRkaWUkRc2A=|sjiyStVuSiRzt+JJVP4WRYsTHbFR3ilUP3IKKNQBRQ==',
+            sandbox: true
+        },
+
         filepicker: {
             key:       'AMMYr96hlQf2E9H9eAVMAz',
-            mimetype:  'text/html',
-            extension: '.html'
+            mimetype:  'text/xml',
+            extension: '.xml'
         }
 
     };
@@ -308,10 +317,12 @@
     $(options.info)
         .on('click', 'a', function (event) {
             event.preventDefault();
-            var $a = $(this);
+            var $a = $(this),
+                $current = $('.current');
             if ($a.is('#scr_type')) {
-                $('.current').trigger('type').focus()
+                $current.trigger('type')
             }
+            $current.focus();
             return false
         });
 
@@ -429,8 +440,9 @@
 
                 case 113:
                     /* f2 - focus to current element */
+                    event.preventDefault();
                     $(options.key).trigger('currentFocus');
-                    return true;
+                    return false;
                     break
             }
         }

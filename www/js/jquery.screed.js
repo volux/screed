@@ -20,9 +20,9 @@
             classes: ['action', 'character', 'parenthetical', 'dialog', 'titr', 'transition'],
 
             addType: {
-                char:    ['parenthetical', '…'],
-                corr:    ['dialog', '…'],
-                default: ['action', '…']
+                character:     ['parenthetical', '…'],
+                parenthetical: ['dialog', '…'],
+                default:       ['action', '…']
             },
 
             el: {
@@ -635,8 +635,13 @@
                                 case 9:
                                     /* tab - change style in action and move to next with select all in header */
                                     event.preventDefault();
-                                    if ($el.is(options.el.para) && $el.prevAll().length) {
-                                        return ed.style($el, 1)
+                                    if ($el.is(options.el.para)) {
+                                        if ($el.prevAll().length) {
+                                            return ed.style($el, 1)
+                                        } else {
+                                            options.notify.info('First paragraph in scene must be Action');
+                                            return false;
+                                        }
                                     }
                                     if ($el.is(options.el.line) && $ed.text().length) {
                                         $screed.data('select', true);

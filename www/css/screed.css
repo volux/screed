@@ -34,7 +34,7 @@ body.scr-alone {
     position:         relative;
     background-color: #ffffff;
     background:       #ffffff -webkit-linear-gradient(top, rgba(250, 250, 250, 0) 0%, rgba(250, 250, 250, .05) 95%, rgba(100, 100, 100, .01) 100%) 0 1047px;
-    background-size:  90% 972px;
+    background-size:  100% 972px;
     box-shadow:       0 2px 5px rgba(0, 0, 0, 0.4), inset 0 0 50px rgba(0, 0, 0, 0.2);
 }
 
@@ -44,24 +44,24 @@ body.scr-alone {
     width:             40%;
     height:            10px;
     content:           ' ';
-    left:              12px;
-    bottom:            12px;
+    left:              8px;
+    bottom:            14px;
     background:        transparent;
     -webkit-transform: skew(-5deg) rotate(-5deg);
-    box-shadow:        0 6px 12px rgba(0, 0, 0, 0.5);
+    box-shadow:        0 8px 13px rgba(0, 0, 0, 0.5);
     z-index:           -1;
 }
 
 .scr-pages:after {
     left:              auto;
-    right:             12px;
+    right:             8px;
     -webkit-transform: skew(5deg) rotate(5deg);
 }
 
 .screed {
-    width:         100%;
-    min-height:    900px;
+    min-height:    972px;
     margin:        0;
+    padding:       0;
     counter-reset: section;
 }
 
@@ -70,8 +70,6 @@ body.scr-alone {
     font-family: 'Courier New', monospace;
     font-size:   16px;
     line-height: 18px;
-    color:       #000000;
-    box-sizing:  border-box;
 }
 
 .screed br {
@@ -80,6 +78,7 @@ body.scr-alone {
 
 .screed p {
     margin:           0;
+    padding:          0;
     background-color: transparent;
 }
 
@@ -89,9 +88,6 @@ body.scr-alone {
 
 .screed .first-page {
     display:          none;
-    border:           none;
-    margin:           0;
-    padding:          0;
     height:           972px;
     overflow:         hidden;
     page-break-after: always;
@@ -124,7 +120,7 @@ body.scr-alone {
     font-size:   28pt;
     color:       rgba(100, 100, 100, .1);
     float:       right;
-    margin:      -1em 0 -100% -100%;
+    margin:      -1em;
 }
 
 .screed.locked:before {
@@ -164,8 +160,8 @@ body.scr-alone {
 }
 
 .screed section header {
-    margin:            0 15mm 18px -18px;
-    padding-left:      18px;
+    margin:            0 4em 18px -.3em;
+    padding-left:      .3em;
     page-break-after:  avoid;
     page-break-inside: avoid;
     page-break-before: auto;
@@ -286,7 +282,7 @@ body.scr-alone {
 @media print {
     @page {
         size:              A4 portrait;
-        margin:            25mm 20mm 12.5mm 33mm;
+        margin:            25mm 20mm 12.5mm 35mm;
         counter-increment: page;
     }
 
@@ -300,7 +296,7 @@ body.scr-alone {
         box-shadow:  none;
         padding:     0;
         margin:      0;
-        width:       100%;
+        width:       auto;
         font-size:   11.6pt;
         line-height: 12.1pt;
     }
@@ -309,14 +305,23 @@ body.scr-alone {
         counter-reset: page 1;
     }
 
-    .screed * {
-        font-size:   11.6pt;
-        line-height: 12.1pt;
-        background:  #ffffff none;
+    .scr-pages {
+
+    }
+
+    .scr-pages:before,
+    .scr-pages:after {
+        display: none;
     }
 
     .screed {
-        min-height: 100%;
+        width: 145mm;
+    }
+
+    .screed * {
+        font-size:   11.6pt;
+        line-height: 12.1pt;
+        padding:     0;
     }
 
     .screed .first-page {
@@ -328,4 +333,12 @@ body.scr-alone {
         margin: 90mm 0 0 72mm;
     }
 
+    .screed section {
+        margin: 0 0 0 0;
+    }
+
+    .screed section header {
+        margin:       0 0 0 0;
+        padding-left: 0;
+    }
 }
