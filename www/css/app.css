@@ -1,13 +1,6 @@
 /* app.css */
 @charset "UTF-8";
 
-@import "//raw.github.com/addyosmani/jquery-ui-bootstrap/gh-pages/assets/css/bootstrap.min.css";
-@import "//raw.github.com/addyosmani/jquery-ui-bootstrap/gh-pages/assets/css/font-awesome.min.css";
-@import "//raw.github.com/addyosmani/jquery-ui-bootstrap/gh-pages/css/custom-theme/jquery-ui-1.10.1.custom.css";
-@import "//plugs.googlecode.com/svn-history/r219/trunk/plugs/ui/jquery/pnotify/static/pnotify/1.2.0/jquery.pnotify.default.css";
-@import "//plugs.googlecode.com/svn-history/r219/trunk/plugs/ui/jquery/pnotify/static/pnotify/1.2.0/jquery.pnotify.default.icons.css";
-@import "screed.css";
-
 body {
     background-color: rgb(85, 85, 90);
 }
