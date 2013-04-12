@@ -1,12 +1,29 @@
 /* app.css */
 @charset "UTF-8";
+html {
+    /*
+        height:   100%;
+    */
+}
 
 body {
     background-color: rgb(85, 85, 90);
+    height:           100%;
+    overflow:         hidden;
+    overflow-y:       scroll;
 }
 
 .navbar-fixed-top {
-    box-shadow: 0 1px 10px rgba(0, 0, 0, .4)
+    box-shadow:          0 1px 10px rgba(0, 0, 0, .4);
+    position:            fixed !important;
+    margin-bottom:       0 !important;
+    -moz-user-select:    none;
+    -webkit-user-select: none;
+    user-select:         none;
+}
+
+.navbar-fixed-top .navbar-inner {
+    padding: 0 0 0 20px !important;
 }
 
 .navbar .brand {
@@ -45,6 +62,17 @@ body {
     text-align: center;
 }
 
+.scr-content {
+
+    overflow:   hidden;
+    overflow-y: scroll;
+    position:   fixed;
+    top:        41px;
+    right:      0;
+    bottom:     0;
+    left:       0;
+}
+
 .scr-help {
     box-sizing:                 border-box;
     position:                   fixed;
@@ -55,6 +83,7 @@ body {
     background-color:           rgba(250, 250, 250, .6);
     border-bottom-right-radius: 8px;
     box-shadow:                 0 1px 3px rgba(0, 0, 0, .4);
+    cursor:                     default;
 }
 
 .scr-help.scr-open {
@@ -130,7 +159,7 @@ body {
 
 .scr-help code {
     color:            #000000;
-    background-color: rgba(0, 0, 0, .1);
+    background-color: rgba(250, 250, 250, .3);
     box-shadow:       1px 1px 3px rgba(0, 0, 0, .4), inset 1px 1px 3px rgba(250, 250, 250, .9), inset -4px -4px 3px rgba(250, 250, 250, .3);
     text-shadow:      0 1px 0 rgba(255, 255, 255, 0.5);
     border:           none;
@@ -146,40 +175,168 @@ body {
     color: #ff0000;
 }
 
-#dialog-confirm.ui-dialog-content {
+.scr-help code:hover {
+    color: #ff0000;
+}
+
+.scr-help li code:hover {
+    cursor: pointer;
+}
+
+#scr_clean {
+    display: none;
+}
+
+.ui-dialog {
+    position: fixed;
+}
+
+.ui-dialog-content {
     display: block !important;
 }
 
-#dialog-confirm i {
-    display:   block;
-    font-size: 29pt;
-    float:     left;
-    margin:    0 .5em 0 0;
-    color:     red;
+.ui-dialog i {
+    display:     block;
+    overflow:    hidden;
+    font-size:   38px;
+    float:       left;
+    margin:      0 12px 0 0;
+    color:       red;
+    text-shadow: 1px 1px 0 rgba(250, 250, 250, .5);
 }
 
 .ui-tooltip {
     border:           none;
     color:            #000000;
-    background-color: rgba(0, 0, 0, .1) !important;
+    background-color: rgba(250, 250, 250, .8) !important;
     box-shadow:       1px 1px 6px rgba(0, 0, 0, .4), inset 1px 1px 3px rgba(250, 250, 250, .9), inset -4px -4px 3px rgba(250, 250, 250, .3);
     text-shadow:      0 1px 0 rgba(255, 255, 255, 0.5);
+    z-index:          999999;
 }
 
-#scr_current {
-    width:        70px;
-    padding-left: 5px
+.scr-status button span.ui-icon {
+    display: inline !important;
 }
 
-#scr_type {
+.scr-info button {
+    padding-left: 5px;
+    text-align:   left;
+    overflow:     hidden;
+}
+
+.scr-info button.scr-info-type-sel {
+    padding-left: 14px;
+}
+
+.scr-info button i {
+    margin-right: 4px;
+}
+
+.scr-info button.scr-info-type-sel i {
+    margin-right: 0;
+}
+
+.scr-info-pos {
+    width: 100px;
+}
+
+.scr-info-type {
     text-transform: capitalize;
-    width:          140px;
-    padding-left:   5px
+    width:          170px;
 }
 
-#scr_current span,
-#scr_type span {
-    margin-left: 5px;
+.scr-info-pos > span,
+.scr-info-type > span {
+    margin-left: 0;
+}
+
+.scr-menu-p,
+.scr-menu-where,
+.scr-menu-when {
+    position: absolute;
+    display:  none;
+}
+
+.scr-menu-where a,
+.scr-menu-when a {
+    text-transform: uppercase;
+}
+
+.ui-menu {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.ui-menu .ui-state-disabled a {
+    color: lightgray;
+}
+
+.scr-inline-title {
+    text-transform: uppercase;
+    font-family:    'Courier New', monospace;
+    font-size:      16px;
+}
+
+.scr-pointer {
+    cursor: pointer;
+}
+
+.scr-pointer:hover {
+    outline: #ff0000 thin;
+}
+
+.scr-preview {
+    position:      fixed;
+    border-radius: 6px 6px 12px 12px;
+    box-shadow:    0 2px 10px rgba(0, 0, 0, .4), inset 0 -10px 10px 5px rgba(0, 0, 0, .3);
+    border-top:    1px solid rgba(250, 250, 250, .5);
+    border-bottom: 8px solid rgba(0, 0, 0, .2);
+    background:    rgba(100, 100, 100, .5);
+    padding:       20px;
+    max-height:    60%;
+    overflow:      hidden;
+    /*overflow-y: scroll;*/
+}
+
+.scr-preview .scr-ribbon {
+    zoom: 50%;
+}
+
+.scr-preview .scr-first-page {
+    display: none !important;
+}
+
+.scr-preview .scr-current:before {
+    float:       left;
+    margin:      -1px -1em 0 -2px;
+    content:     "|";
+    border-left: 2px solid #ff0000;
+    color:       transparent;
+}
+
+.footer-links li {
+    display: inline;
+    padding: 0 2px;
+}
+
+#scr_debug {
+    position:         fixed;
+    top:              41px;
+    right:            30px;
+    bottom:           0;
+    width:            200px;
+    background-color: rgba(250, 150, 100, .6);
+    color:            #000000;
+    overflow:         hidden;
+    overflow-y:       scroll;
+    padding:          10px;
+}
+
+#scr_debug li {
+    list-style: none;
+    padding:    0;
+    margin:     0 0 0 -20px;
+    cursor:     pointer;
 }
 
 @media print {
@@ -190,5 +347,12 @@ body {
     .ui-pnotify,
     .ui-pnotify-container {
         display: none !important;
+    }
+
+    .scr-content {
+        overflow:   visible;
+        overflow-y: visible;
+        position:   relative;
+        top:        0;
     }
 }

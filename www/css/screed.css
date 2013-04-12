@@ -3,11 +3,11 @@
 
 body.scr-alone {
     background-color: rgb(85, 85, 90);
-    color:            #000000;
+    color:            #333333;
 }
 
 .scr-go {
-    color:       #000000;
+    color:       #333333;
     position:    fixed;
     top:         5px;
     left:        5px;
@@ -20,13 +20,12 @@ body.scr-alone {
     overflow:    hidden;
 }
 
-#volux .first-page,
-.scr-alone .first-page {
+.scr-alone .scr-first-page {
     display: block !important;
 }
 
-.scr-pages {
-    margin:           50px auto;
+.scr-ribbon {
+    margin:           200px auto;
     padding:          20mm 20mm 12.5mm 30mm;
     box-sizing:       border-box;
     width:            210mm;
@@ -38,8 +37,8 @@ body.scr-alone {
     box-shadow:       0 2px 5px rgba(0, 0, 0, 0.4), inset 0 0 50px rgba(0, 0, 0, 0.2);
 }
 
-.scr-pages:before,
-.scr-pages:after {
+.scr-ribbon:before,
+.scr-ribbon:after {
     position:          absolute;
     width:             40%;
     height:            10px;
@@ -52,17 +51,21 @@ body.scr-alone {
     z-index:           -1;
 }
 
-.scr-pages:after {
+.scr-ribbon:after {
     left:              auto;
     right:             8px;
     -webkit-transform: skew(5deg) rotate(5deg);
 }
 
 .screed {
-    min-height:    972px;
+    min-height:    1944px;
     margin:        0;
     padding:       0;
     counter-reset: section;
+}
+
+.screed.scr-collapsed {
+    min-height: 972px;
 }
 
 .screed,
@@ -80,17 +83,25 @@ body.scr-alone {
     margin:           0;
     padding:          0;
     background-color: transparent;
+    position:         relative;
+}
+
+[contenteditable="true"] {
+    /*    white-space: pre-wrap;*/
 }
 
 .screed [contenteditable="true"]:focus {
     outline: none;
 }
 
-.screed .first-page {
-    display:          none;
+.screed .scr-first-page {
     height:           972px;
     overflow:         hidden;
     page-break-after: always;
+}
+
+.screed .scr-first-page.hidden {
+    display: none;
 }
 
 .screed .title {
@@ -119,8 +130,9 @@ body.scr-alone {
     font-family: FontAwesome, fantasy;
     font-size:   28pt;
     color:       rgba(100, 100, 100, .1);
-    float:       right;
-    margin:      -1em;
+    position:    absolute;
+    top:         1em;
+    right:       1em;
 }
 
 .screed.locked:before {
@@ -149,6 +161,10 @@ body.scr-alone {
     float:             right;
 }
 
+.scr-alone .screed section:before {
+    content: none;
+}
+
 .screed section:not([role]) {
     counter-reset: deep;
 }
@@ -157,6 +173,10 @@ body.scr-alone {
     counter-increment: deep;
     content:           counter(section) "." counter(deep);
     float:             right;
+}
+
+.scr-alone .screed section[role]:before {
+    content: none;
 }
 
 .screed section header {
@@ -168,6 +188,7 @@ body.scr-alone {
     background-color:  #e0e0e0;
     background:        #e0e0e0 -webkit-linear-gradient(top, rgba(250, 250, 250, .1) 1%, rgba(195, 195, 195, .25) 50%) 0 0;
     background-size:   100% 18px;
+    position:          relative;
 }
 
 .screed section[role] header {
@@ -177,7 +198,6 @@ body.scr-alone {
 
 .screed section header span {
     text-transform: uppercase;
-    display:        inline-block;
     background:     inherit;
 }
 
@@ -279,6 +299,37 @@ body.scr-alone {
     text-transform: uppercase;
 }
 
+.scr-menu-location,
+.scr-menu-character {
+    position: absolute;
+    display:  none;
+}
+
+.scr-menu-location a,
+.scr-menu-location a {
+    text-transform: uppercase;
+}
+
+.scr-el-cur {
+    /*    background-color: rgba(220,220,220,.1);*/
+}
+
+.scr-scene-num {
+    text-align:        right;
+    margin:            -18px 0 -18px 0;
+    height:            0;
+
+    page-break-inside: avoid;
+    page-break-after:  avoid;
+}
+
+footer {
+    height:              300px;
+    -moz-user-select:    none;
+    -webkit-user-select: none;
+    user-select:         none;
+}
+
 @media print {
     @page {
         size:              A4 portrait;
@@ -288,8 +339,9 @@ body.scr-alone {
 
     html,
     body,
-    .scr-pages,
-    .screed {
+    .scr-ribbon,
+    .screed,
+    .screed header {
         color:       #000000;
         background:  #ffffff none;
         border:      none;
@@ -299,18 +351,20 @@ body.scr-alone {
         width:       auto;
         font-size:   11.6pt;
         line-height: 12.1pt;
+        overflow:    visible;
     }
 
     body {
         counter-reset: page 1;
     }
 
-    .scr-pages {
+    .scr-ribbon {
 
     }
 
-    .scr-pages:before,
-    .scr-pages:after {
+    .scr-ribbon:before,
+    .scr-ribbon:after,
+    footer {
         display: none;
     }
 
@@ -322,14 +376,15 @@ body.scr-alone {
         font-size:   11.6pt;
         line-height: 12.1pt;
         padding:     0;
+        background:  transparent none !important;
     }
 
-    .screed .first-page {
+    .screed .scr-first-page {
         display: block !important;
         height:  890px;
     }
 
-    .screed .first-page .contact {
+    .screed .scr-first-page .contact {
         margin: 90mm 0 0 72mm;
     }
 
@@ -341,4 +396,12 @@ body.scr-alone {
         margin:       0 0 0 0;
         padding-left: 0;
     }
+
+    .scr-go {
+        position: absolute;
+        top:      0;
+        left:     0;
+    }
+
 }
+
