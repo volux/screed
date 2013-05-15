@@ -1,44 +1,48 @@
 /* screed.css */
-@charset "UTF-8";
 
-body.scr-alone {
+* {
+    text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+}
+
+body.scr-share {
     background-color: rgb(85, 85, 90);
     color:            #333333;
 }
 
 .scr-go {
-    color:       #333333;
-    position:    fixed;
-    top:         5px;
-    left:        5px;
-    width:       90px;
-    height:      30px;
-    padding:     0;
-    background:  transparent url('data:image/png;base64,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') no-repeat 0 0;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow:    hidden;
+    color:               #333333;
+    position:            fixed;
+    top:                 5px;
+    left:                5px;
+    width:               90px;
+    height:              30px;
+    padding:             0;
+    background:          transparent url('data:image/png;base64,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') no-repeat 0 0;
+    text-indent:         100%;
+    white-space:         nowrap;
+    overflow:            hidden;
 }
 
-.scr-alone .scr-first-page {
+.scr-share cover,
+screed.locked cover {
     display: block !important;
 }
 
-.scr-ribbon {
+.scr-paper {
     margin:           200px auto;
     padding:          20mm 20mm 12.5mm 30mm;
-    box-sizing:       border-box;
-    width:            210mm;
+    width:            160mm;
     border:           none;
     position:         relative;
     background-color: #ffffff;
     background:       #ffffff -webkit-linear-gradient(top, rgba(250, 250, 250, 0) 0%, rgba(250, 250, 250, .05) 95%, rgba(100, 100, 100, .01) 100%) 0 1047px;
     background-size:  100% 972px;
     box-shadow:       0 2px 5px rgba(0, 0, 0, 0.4), inset 0 0 50px rgba(0, 0, 0, 0.2);
+    min-height: 972px;
 }
 
-.scr-ribbon:before,
-.scr-ribbon:after {
+.scr-paper:before,
+.scr-paper:after {
     position:          absolute;
     width:             40%;
     height:            10px;
@@ -51,82 +55,84 @@ body.scr-alone {
     z-index:           -1;
 }
 
-.scr-ribbon:after {
+.scr-paper:after {
     left:              auto;
     right:             8px;
     -webkit-transform: skew(5deg) rotate(5deg);
 }
 
-.screed {
-    min-height:    1944px;
+screed {
+    display:       block;
+    min-height:    972px;
     margin:        0;
     padding:       0;
-    counter-reset: section;
+    counter-reset: scene;
 }
 
-.screed.scr-collapsed {
-    min-height: 972px;
+screed.scr-expand {
+    min-height: 1944px;
 }
 
-.screed,
-.screed * {
+screed,
+screed * {
     font-family: 'Courier New', monospace;
     font-size:   16px;
     line-height: 18px;
 }
 
-.screed br {
+screed br {
     display: inline-block;
 }
 
-.screed p {
+screed p {
     margin:           0;
     padding:          0;
     background-color: transparent;
     position:         relative;
 }
 
-[contenteditable="true"] {
-    /*    white-space: pre-wrap;*/
-}
-
-.screed [contenteditable="true"]:focus {
+screed [contenteditable="true"]:focus {
     outline: none;
 }
 
-.screed .scr-first-page {
+screed cover {
     height:           972px;
     overflow:         hidden;
     page-break-after: always;
-}
-
-.screed .scr-first-page.hidden {
     display: none;
 }
 
-.screed .title {
+screed .locked cover {
+    display:          block;
+}
+
+screed cover.scr-show {
+    display: block !important;
+}
+
+screed .title {
     margin:         65mm 32.5mm 0 32.5mm;
     text-align:     center;
     text-transform: uppercase;
 }
 
-.screed .author {
+screed .author {
     margin:         18px 32.5mm 0 32.5mm;
     text-align:     center;
     text-transform: capitalize;
 }
 
-.screed .from {
+screed .from {
     margin:         18px 32.5mm 0 32.5mm;
     text-align:     center;
     text-transform: lowercase;
 }
 
-.screed .contact {
+screed .contact {
     margin: 90mm 0 0 75.5mm;
 }
 
-.screed:before {
+screed:before {
     font-family: FontAwesome, fantasy;
     font-size:   28pt;
     color:       rgba(100, 100, 100, .1);
@@ -135,51 +141,53 @@ body.scr-alone {
     right:       1em;
 }
 
-.screed.locked:before {
+screed.locked:before {
     content: "\f023";
 }
 
-.screed.saved::before {
+screed.saved::before {
     content: "\f0c7";
 }
 
-.screed.locked.saved::before {
+screed.locked.saved::before {
     content: "\f023" " " "\f0c7";
 }
 
-.screed section {
+screed scene {
+    display: block;
     margin-bottom: 18px;
+    page-break-before: auto;
 }
 
-.screed section[role=skip] {
+screed scene[role=skip] {
     color: #696969;
 }
 
-.screed section:before {
-    counter-increment: section;
-    content:           counter(section);
+screed scene:before {
+    counter-increment: scene;
+    content:           counter(scene);
     float:             right;
 }
 
-.scr-alone .screed section:before {
+.scr-share screed scene:before {
     content: none;
 }
 
-.screed section:not([role]) {
+screed scene:not([role]) {
     counter-reset: deep;
 }
 
-.screed section[role]:before {
+screed scene[role]:before {
     counter-increment: deep;
-    content:           counter(section) "." counter(deep);
+    content:           counter(scene) "." counter(deep);
     float:             right;
 }
 
-.scr-alone .screed section[role]:before {
+.scr-share screed scene[role]:before {
     content: none;
 }
 
-.screed section header {
+screed scene header {
     margin:            0 4em 18px -.3em;
     padding-left:      .3em;
     page-break-after:  avoid;
@@ -191,40 +199,67 @@ body.scr-alone {
     position:          relative;
 }
 
-.screed section[role] header {
+screed scene[role] header {
     background-color: #f6f6f6;
     background:       #f6f6f6 -webkit-linear-gradient(top, white 1%, #f6f6f6 50%) 0 0;
 }
 
-.screed section header span {
+screed scene header span {
     text-transform: uppercase;
     background:     inherit;
 }
 
-.screed .where:after {
+screed scene tt:empty {
+    display: inline-block;
+    width: 10px;
+    height: 18px;
+    /*border-left: red solid 1px;*/
+    margin: 0;
+    padding: 0;
+}
+
+screed scene tt:focus {
+    white-space: pre-wrap;
+}
+
+screed scene *::selection {
+    color: red;
+    background-color: #f6f6f6;
+}
+screed scene action {
+    display: block;
+    page-break-before: avoid;
+}
+
+screed .where:after {
     content: '.';
 }
 
-.screed .location {
+screed .location {
 }
 
-.screed .location:after {
+screed .location:after {
     content: ' -';
 }
 
-.scr-alone .screed .where:after {
+.scr-share screed .where:after {
     content: none;
 }
 
-.scr-alone .screed .location:after {
+.scr-share screed .location:after {
     content: none;
 }
 
-.screed .action {
+screed scene .action {
     margin: 18px 0 18px 0;
 }
 
-.screed .character {
+screed .action:first-child {
+    page-break-before: avoid;
+    page-break-after: auto;
+}
+
+screed .character {
     margin:            18px 0 0 6.75cm;
     text-transform:    uppercase;
     page-break-after:  avoid;
@@ -232,68 +267,68 @@ body.scr-alone {
     page-break-before: auto;
 }
 
-.screed .parenthetical {
+screed .parenthetical {
     margin:            0 4.5cm 0 5.5cm;
     page-break-after:  avoid;
     page-break-inside: avoid;
     page-break-before: auto;
 }
 
-.screed .parenthetical:before {
+screed .parenthetical:before {
     content: '(';
 }
 
-.screed .parenthetical:after {
+screed .parenthetical:after {
     content: ')';
 }
 
-.scr-alone .screed .parenthetical:before {
+.scr-share screed .parenthetical:before {
     content: none;
 }
 
-.scr-alone .screed .parenthetical:after {
+.scr-share screed .parenthetical:after {
     content: none;
 }
 
-.screed .dialog {
+screed .dialog {
     margin:            0 3.75cm 0 3.75cm;
     page-break-inside: auto;
     page-break-after:  auto;
     page-break-before: avoid;
 }
 
-.screed .subtitr {
+screed .subtitr {
     margin-left:  2.75cm;
     margin-right: 4.75cm;
 }
 
-.screed .titr {
+screed .titr {
     margin: 52px 3.5cm 18px 5.55cm;
 }
 
-.screed .titr:before {
+screed .titr:before {
     content: 'TITR:';
     float:   left;
     margin:  -36px 0 0 -5.55cm;
 }
 
-.scr-alone .screed .titr:before {
+.scr-share screed .titr:before {
     content: none;
     float:   none;
     margin:  0;
 }
 
-.scr-alone .screed .titr {
+.scr-share screed .titr {
     margin: 18px 3.5cm 18px 5.55cm;
 }
 
-.screed .b-titr {
+screed .b-titr {
     text-transform:    uppercase;
     page-break-inside: avoid;
     page-break-after:  avoid;
 }
 
-.screed .transition {
+screed .transition {
     text-align:     right;
     margin-left:    12.5cm;
     text-transform: uppercase;
@@ -310,10 +345,6 @@ body.scr-alone {
     text-transform: uppercase;
 }
 
-.scr-el-cur {
-    /*    background-color: rgba(220,220,220,.1);*/
-}
-
 .scr-scene-num {
     text-align:        right;
     margin:            -18px 0 -18px 0;
@@ -324,7 +355,7 @@ body.scr-alone {
 }
 
 footer {
-    height:              300px;
+    height: 300px;
     -moz-user-select:    none;
     -webkit-user-select: none;
     user-select:         none;
@@ -332,16 +363,16 @@ footer {
 
 @media print {
     @page {
-        size:              A4 portrait;
-        margin:            25mm 20mm 12.5mm 35mm;
+        margin: 25mm 20mm 12.5mm 35mm;
         counter-increment: page;
+        size: A4 portrait;
     }
 
     html,
     body,
-    .scr-ribbon,
-    .screed,
-    .screed header {
+    .scr-paper,
+    screed,
+    screed header {
         color:       #000000;
         background:  #ffffff none;
         border:      none;
@@ -352,47 +383,48 @@ footer {
         font-size:   11.6pt;
         line-height: 12.1pt;
         overflow:    visible;
+        height: 100% !important;
+        min-height: 100% !important;
     }
 
     body {
         counter-reset: page 1;
     }
 
-    .scr-ribbon {
+    .scr-paper {
 
     }
 
-    .scr-ribbon:before,
-    .scr-ribbon:after,
-    footer {
+    .scr-paper:before,
+    .scr-paper:after {
         display: none;
     }
 
-    .screed {
+    screed {
         width: 145mm;
     }
 
-    .screed * {
+    screed * {
         font-size:   11.6pt;
         line-height: 12.1pt;
         padding:     0;
         background:  transparent none !important;
     }
 
-    .screed .scr-first-page {
+    screed cover {
         display: block !important;
         height:  890px;
     }
 
-    .screed .scr-first-page .contact {
+    screed cover .contact {
         margin: 90mm 0 0 72mm;
     }
 
-    .screed section {
+    screed scene {
         margin: 0 0 0 0;
     }
 
-    .screed section header {
+    screed scene header {
         margin:       0 0 0 0;
         padding-left: 0;
     }

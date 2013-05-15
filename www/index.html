@@ -1,171 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js" lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=800,user-scalable=0" />
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width,user-scalable=0"/>
     <title>Screed</title>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet" />
-    <link href="//addyosmani.github.com/jquery-ui-bootstrap/css/custom-theme/jquery-ui-1.10.1.custom.css" rel="stylesheet" />
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet" />
-    <link href="//pinesframework.org/pnotify/jquery.pnotify.default.css" rel="stylesheet" />
-    <link href="//pinesframework.org/pnotify/jquery.pnotify.default.icons.css" rel="stylesheet" />
-    <link href="/css/app.css" rel="stylesheet" />
-    <link href="/css/screed.css" rel="stylesheet" />
-    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="google-site-verification" content="Lcct6tGt3ak8YTycUXpKRZgIgWkQJ87S34ji8m44z8g" />
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet"/>
+    <link href="//addyosmani.github.io/jquery-ui-bootstrap/css/custom-theme/jquery-ui-1.10.2.custom.css" rel="stylesheet"/>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet"/>
+    <link href="//pinesframework.org/pnotify/jquery.pnotify.default.css" rel="stylesheet"/>
+    <link href="//pinesframework.org/pnotify/jquery.pnotify.default.icons.css" rel="stylesheet"/>
+    <link href="/css/app.css" rel="stylesheet"/>
+    <link href="/css/screed.css" rel="stylesheet"/>
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
 </head>
-<body>
-<header class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <a class="brand image" href="/" title="SCReenplay Easy EDitor"><em>Scr</em>eed</a>
-        <ul class="nav">
-            <li class="divider-vertical"></li>
-        </ul>
-        <div class="nav scr-edit">
-            <button class="scr-edit-undo btn" title="Ctrl + Z">Undo</button>
-            <button class="scr-edit-redo btn" title="Ctrl + Shift + Z">Redo</button>
-        </div>
-        <div class="nav scr-status">
-            <button class="scr-status-lock btn" title="Ctrl + L">Lock</button>
-            <button class="scr-status-save btn" title="Ctrl + S">Save</button>
-        </div>
-        <div class="nav scr-info">
-            <button class="scr-info-pos btn" title="F2"><i class="icon-edit"></i><span> </span></button>
-            <button class="scr-info-type btn" title="Tab"><i class="icon-indent-right"></i><span> </span></button>
-            <button class="scr-info-type-sel btn"><i class="icon-chevron-down"></i></button>
-        </div>
-        <ul class="scr-menu-p">
-            <li><a href="/#!action">Действие</a></li>
-            <li><a href="/#!character">Персонаж</a></li>
-            <li><a href="/#!parenthetical">Ремарка</a></li>
-            <li><a href="/#!dialog">Диалог</a></li>
-            <li><a href="/#!titr">Титр</a></li>
-            <li><a href="/#!transition">Переход</a></li>
-        </ul>
-        <ul class="scr-menu-where">
-            <li><a href="/#!инт">Интерьер</a></li>
-            <li><a href="/#!нат">Натура</a></li>
-            <li><a href="/#!инт/нат">Инт. на натуре</a></li>
-            <li><a href="/#!нат+инт">Натура и инт.</a></li>
-        </ul>
-        <ul class="scr-menu-when">
-            <li><a href="/#!день">День</a></li>
-            <li><a href="/#!ночь">Ночь</a></li>
-            <li><a href="/#!утро">Утро</a></li>
-            <li><a href="/#!вечер">Вечер</a></li>
-            <li><a href="/#!рассвет">Рассвет</a></li>
-            <li><a href="/#!закат">Закат</a></li>
-        </ul>
-    </div>
-</header>
-<!--div class="scr-content"-->
-<div class="scr-ribbon">
-    <article data-user='{"id": "7d2d8236-3694-4fb7-a35a-3cb58e7ad194", "name": "volux", "contact": ""}'
-             class="screed saved">
-        <header class="scr-first-page">
-            <p class="title">Отниму у вас минутку...</p>
-
-            <p class="author">volux.screed</p>
-
-            <p class="from">приквел к Вашим сценариям :)</p>
-
-            <p class="contact">Андрей Скулов, screed@volux.ru</p>
-        </header>
-        <section>
-            <header>
-                <span class="where">инт</span>
-                <span class="location">screed.pro</span>
-                <span class="when">день</span>
-            </header>
-            <div>
-                <p class="action">СЦЕНАРИСТ (вечно молодой и талантливый) впервые здесь. Оглядывается. Вдруг:</p>
-
-                <p class="character">Screed</p>
-
-                <p class="parenthetical">искренне</p>
-
-                <p class="dialog">Добро пожаловать!</p>
-
-                <p class="character">Сценарист</p>
-
-                <p class="dialog">Спасибо.</p>
-
-                <p class="parenthetical">озадачен</p>
-
-                <p class="dialog">Пустовато как-то... С чего здесь нужно начинать?</p>
-
-                <p class="character">Screed</p>
-
-                <p class="dialog">Отниму у вас минутку...</p>
-
-                <p class="character">Сценарист</p>
-
-                <p class="dialog">Ладно, но не больше!</p>
-
-                <p class="character">Screed</p>
-
-                <p class="dialog">Просто начинайте писать ваш сценарий. Чтобы начать новый текст, нажмите Ctrl+E, затем
-                    F2
-                    ...Запомните одно: здесь большинство необходимых действий выполняется с
-                    помощью клавиатуры.</p>
-
-                <p class="character">Сценарист</p>
-
-                <p class="dialog">Получается, что мышь почти не нужна? Совсем?</p>
-
-                <p class="character">Screed</p>
-
-                <p class="dialog">Не выбрасывайте её пока...</p>
-
-                <p class="parenthetical">улыбается</p>
-
-                <p class="dialog">Кое-что можно сделать и мышью... Но зачем вам отвлекаться?</p>
-
-                <p class="action">Сценарист потянулся к клавиатуре.</p>
-
-                <p class="character">Сценарист</p>
-
-                <p class="dialog">Да-да. У меня в голове уже есть пара первых сцен...</p>
-
-                <p class="character">Screed</p>
-
-                <p class="parenthetical">перебивает</p>
-
-                <p class="dialog">Вам поможет клавиша F1...</p>
-
-                <p class="action">Сценарист нажимает Ctrl+E.</p>
-
-                <p class="titr">The End</p>
-            </div>
-        </section>
-        <aside>
-            <ul class="scr-menu-location">
-                <li>местоположение</li>
-                <li>screed.pro</li>
-            </ul>
-            <ul class="scr-menu-character">
-                <li>Сценарист</li>
-                <li>Screed</li>
-            </ul>
-        </aside>
-    </article>
-</div>
-<!--/div-->
-<aside class="scr-help scr-min">
-    <ul class="nav nav-list">
-        <li><a class="a-help"><i class="icon-question-sign"></i>Help</a><code>F1</code></li>
+<body><header class="navbar navbar-fixed-top"><div class="navbar-inner"><a class="brand image" href="/" title="SCReenplay Easy EDitor"><em>Scr</em>eed</a><ul class="nav"><li class="divider-vertical"></li></ul><div class="nav scr-status"><button class="scr-status-lock ui-button" title="Ctrl + L">Lock</button><button class="scr-status-save ui-button" title="Ctrl + S">Save</button></div><div class="nav scr-edit"><button class="scr-edit-undo ui-button" title="Ctrl + Z">Undo</button><button class="scr-edit-redo ui-button" title="Ctrl + Shift + Z">Redo</button></div><div class="nav scr-info"><button class="scr-info-pos ui-button" title="F2"><i class="icon-edit"></i><span> </span></button><button class="scr-info-type ui-button" title="Tab"><i class="icon-indent-right"></i><span> </span></button><button class="scr-info-type-sel ui-button"><i class="icon-chevron-down"></i></button></div></div><ul class="scr-menu-p">
+    <li><a href="/#!action">Действие</a></li>
+    <li><a href="/#!character">Персонаж</a></li>
+    <li><a href="/#!parenthetical">Ремарка</a></li>
+    <li><a href="/#!dialog">Диалог</a></li>
+    <li><a href="/#!titr">Титр</a></li>
+    <li><a href="/#!transition">Переход</a></li>
+</ul>
+    <ul class="scr-menu-where">
+        <li><a href="/#!инт">Интерьер</a></li>
+        <li><a href="/#!нат">Натура</a></li>
+        <li><a href="/#!инт/нат">Инт. на натуре</a></li>
+        <li><a href="/#!нат+инт">Натура и инт.</a></li>
     </ul>
-    <ul class="nav nav-list scr-command hide">
-        <li><a href="/#!clean"><i class="icon-file"></i>Clean</a><code>Ctrl</code> <code>E</code></li>
-        <li><a href="/#!open"><i class="icon-cloud-download"></i>Open</a><code>Ctrl</code> <code>O</code></li>
-        <li><a href="/#!save"><i class="icon-save"></i>Save</a><code>Ctrl</code> <code>S</code></li>
-        <li><a href="/#!alone"><i class="icon-file-alt"></i>Alone</a><code>Ct</code> <code>Sh</code>
-            <code>S</code></li>
-        <li><a href="/#!lock"><i class="icon-lock"></i>Lock</a><code>Ctrl</code> <code>L</code></li>
-        <li><a href="/#!print"><i class="icon-print"></i>Print</a><code>Ctrl</code> <code>P</code></li>
-        <li><a href="/#!scenes"><i class="icon-reorder"></i>Scenes</a><code>Shift</code> <code>F1</code></li>
-    </ul>
+    <ul class="scr-menu-when">
+        <li><a href="/#!день">День</a></li>
+        <li><a href="/#!ночь">Ночь</a></li>
+        <li><a href="/#!утро">Утро</a></li>
+        <li><a href="/#!вечер">Вечер</a></li>
+        <li><a href="/#!рассвет">Рассвет</a></li>
+        <li><a href="/#!закат">Закат</a></li>
+    </ul></header><section class="screed"></section><aside class="scr-scenes"><ul class="nav nav-list"></ul></aside><aside class="scr-help scr-min"><ul class="nav nav-list"><li><a class="a-help"><i class="icon-question-sign"></i>Help</a><code>F1</code></li></ul><ul class="nav nav-list scr-command hide">
+    <li><a class="a-clean"><i class="icon-file"> </i>Новый</a><code>Ctrl</code> <code>E</code></li>
+    <li><a class="a-open"><i class="icon-folder-open-alt"> </i>Открыть</a><code>Ctrl</code> <code>O</code></li>
+    <li><a class="a-save"><i class="icon-save"> </i>Сохранить</a><code>Ctrl</code> <code>S</code></li>
+    <li><a class="a-share"><i class="icon-share"> </i>Поделиться</a><code>Ct</code> <code>Sh</code>
+        <code>S</code></li>
+    <li><a class="a-lock"><i class="icon-lock"> </i>Замо́к</a><code>Ctrl</code> <code>L</code></li>
+    <li><a class="a-print"><i class="icon-print"> </i>Печать</a><code>Ctrl</code> <code>P</code></li>
+    <li><a class="a-right"><i class="icon-reorder"> </i>Сцены</a><code>Shift</code> <code>F1</code></li>
+</ul>
+    <dl class="scr-help-mobile hide">
+        <dt><code>??</code></dt>
+        <dd>в мобильном устройстве сочетания клавиш не работают
+        </dd>
+    </dl>
     <dl class="scr-help-full hide">
         <dt><code>??</code></dt>
         <dd>Главный ответ на главный вопрос: Ваши сценарии хранятся только у Вас в компьютере или в Ваших
@@ -208,73 +92,122 @@
         <dd>перейти на первую / последнюю сцену</dd>
 
         <dt><code>Tab</code> <code>Shift</code> <code>Tab</code></dt>
-        <dd>последовательно (Shift: в обратном порядке) изменять тип абзаца или поля заголовка сцены / перемещение по
-            полям на первой странице
+        <dd>последовательно (Shift: в обратном порядке) изменять тип абзаца или поля заголовка сцены / перемещение по полям
+            на первой странице
         </dd>
     </dl>
-</aside>
-
-<footer class="footer">
-    <!-- TODO add some social content -->
-    <div class="container">
-        <ul class="footer-links">
-            <li><a href="//github.com/volux/screed"><i class="icon-github"></i>Code</a></li>
-            <li><a href="/#!about"><i class="icon-info-sign"></i>About</a></li>
-        </ul>
-    </div>
-</footer>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-<script src="//api.filepicker.io/v1/filepicker.js"></script>
-<script src="//pinesframework.org/pnotify/jquery.pnotify.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
-<script src="/js/jquery.screed.js"></script>
-<script src="/js/app.js"></script>
-<!--
-        <script>
-            var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-39756449-1']);
-          _gaq.push(['_trackPageview']);
-
-          (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-          })();
-        </script>
--->
-<div id="scr_clean">
-    <article class="">
-        <header class="scr-first-page">
-            <p class="title">Без названия</p>
-
-            <p class="author">Имя Автора</p>
-
-            <p class="from">оригинальный сценарий</p>
-
-            <p class="contact">Имя Агента, +0(000)0000000, agent@mail.me</p>
+</aside><footer class="footer"><div class="container"><ul class="footer-links">
+    <li><a href="//github.com/volux/screed"><i class="icon-github"> </i>Code</a></li>
+    <li><a href="/#!about"><i class="icon-info-sign"> </i>About</a></li>
+</ul></div></footer><aside class="scr-docs" aria-hidden="true"><screed data-user="" class="empty">
+    <cover>
+        <p class="title">Без названия</p>
+        <p class="author">Имя Автора</p>
+        <p class="from">оригинальный сценарий</p>
+        <p class="contact">Имя Агента, +0(000)0000000, agent@mail.me</p>
+    </cover>
+    <scene>
+        <header>
+            <span class="where">нат</span>
+            <span class="location">местоположение</span>
+            <span class="when">день</span>
         </header>
-        <section>
+        <action>
+            <p class="action"> </p>
+        </action>
+    </scene>
+    <aside>
+        <ul class="scr-menu-location">
+            <li>местоположение</li>
+        </ul>
+        <ul class="scr-menu-character">
+            <li>персонаж</li>
+        </ul>
+    </aside>
+</screed>
+    <screed data-user="7d2d8236-3694-4fb7-a35a-3cb58e7ad194" class="locked saved">
+        <cover>
+            <p class="title">Отниму у вас минутку...</p>
+            <p class="author">volux.screed</p>
+            <p class="from">приквел к Вашим сценариям :)</p>
+            <p class="contact">Андрей Скулов, screed@volux.ru</p>
+        </cover>
+        <scene>
             <header>
-                <span class="where">нат</span>
-                <span class="location">местоположение</span>
+                <span class="where">инт</span>
+                <span class="location">screed.pro</span>
                 <span class="when">день</span>
             </header>
-            <div>
-                <p class="action">&nbsp;</p>
-            </div>
-        </section>
+            <action>
+                <p class="action">СЦЕНАРИСТ (вечно молодой и талантливый) впервые здесь. Оглядывается. Вдруг:</p>
+                <p class="character">Screed</p>
+                <p class="parenthetical">искренне</p>
+                <p class="dialog">Добро пожаловать!</p>
+                <p class="character">Сценарист</p>
+                <p class="dialog">Спасибо.</p>
+                <p class="parenthetical">озадачен</p>
+                <p class="dialog">Пустовато как-то... С чего здесь нужно начинать?</p>
+                <p class="character">Screed</p>
+                <p class="dialog">Отниму у вас минутку...</p>
+                <p class="character">Сценарист</p>
+                <p class="dialog">Ладно, но не больше!</p>
+                <p class="character">Screed</p>
+                <p class="dialog">Чтобы начать новый текст, нажмите Ctrl+E. Здесь большинство действий выполняется с помощью клавиатуры.</p>
+                <p class="character">Сценарист</p>
+                <p class="dialog">Получается, что мышь почти не нужна? Совсем?</p>
+                <p class="character">Screed</p>
+                <p class="dialog">Не выбрасывайте её пока...</p>
+                <p class="parenthetical">улыбается</p>
+                <p class="dialog">Кое-что можно сделать и мышью... Но зачем вам отвлекаться?</p>
+                <p class="action">Сценарист потянулся к клавиатуре.</p>
+                <p class="character">Сценарист</p>
+                <p class="dialog">Да-да. У меня в голове уже есть пара первых сцен...</p>
+                <p class="character">Screed</p>
+                <p class="parenthetical">перебивает</p>
+                <p class="dialog">Вам поможет клавиша F1...</p>
+                <p class="action">Сценарист нажимает Ctrl+E.</p>
+                <p class="titr">The End</p>
+            </action>
+        </scene>
         <aside>
             <ul class="scr-menu-location">
                 <li>местоположение</li>
+                <li>screed.pro</li>
             </ul>
             <ul class="scr-menu-character">
-                <li>персонаж</li>
+                <li>Сценарист</li>
+                <li>Screed</li>
             </ul>
         </aside>
-    </article>
-</div>
-</body>
+    </screed>
+</aside>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<script src="//api.filepicker.io/v1/filepicker.js"></script>
+<script src="//raw.github.com/eligrey/FileSaver.js/master/FileSaver.min.js"></script>
+<script src="//pinesframework.org/pnotify/jquery.pnotify.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/langs.min.js"></script>
+<script src="/js/jquery.screed.js"></script>
+<script src="/js/app.js"></script>
+<script>
+
+    var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-39756449-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+    (function ($) {
+        if (!$.fn.screedApp) {
+            $.error('ScreedApp plugin not loaded')
+        } else {
+            $('body').screedApp({debug: false})
+        }
+    })(jQuery);
+
+</script></body>
 </html>
